@@ -1,17 +1,17 @@
 class Solution {
     public int[] findErrorNums(int[] arr) {
-         int repeat=-1,absent=-1;
-        int n= arr.length;
-        int count=0;
-        for (int i = 1;i<=n ; i++){
-            for (int j = 0 ; j< n ; j ++){
-                if (i==arr[j])count++;
-            }
-            if (count==2)repeat=i;
-            else if (count==0)absent=i;
-            count=0;
-
-        }int[] result={repeat,absent};
+         int repeating=-1 , missing=-1;
+        int[] hasharray=new int[arr.length+1];
+        for (int i = 0;i<arr.length;i++){
+            hasharray[arr[i]]++;
+        }
+        for (int i =1;i<hasharray.length;i++){
+            if (hasharray[i]==0)missing=i;
+            if (hasharray[i]==2)repeating=i;
+        }
+        int[] result={repeating,missing};
         return result;
     }
+    
 }
+       
