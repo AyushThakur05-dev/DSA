@@ -10,7 +10,7 @@ class Solution {
                 break;
             }
              if (arr[low] > arr[mid]) {
-                // min = Math.min(min, arr[mid]);
+                
                 high = mid - 1;
 
             } else if (arr[mid] > arr[high]) {
@@ -18,7 +18,7 @@ class Solution {
             }
             
              if(arr[low]>=arr[mid]&&arr[mid]<=arr[high]){
-                min=Math.min(min,arr[mid]);
+                // min=Math.min(min,arr[mid]);
                 break;
             }
            
