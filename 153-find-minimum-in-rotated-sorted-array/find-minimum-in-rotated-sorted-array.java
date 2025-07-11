@@ -4,8 +4,9 @@ class Solution {
         int min = Integer.MAX_VALUE;
         while (low <= high) {
             mid = (low + high) / 2;
+            
 
-            if (arr[low] > arr[mid]) {
+             if (arr[low] > arr[mid]) {
                 min = Math.min(min, arr[mid]);
                 high = mid - 1;
 
@@ -16,10 +17,11 @@ class Solution {
                 min = Math.min(min, arr[low]);
                 break;
             }
-            if(arr[low]>=arr[mid]&&arr[mid]<=arr[high]){
+             if(arr[low]>=arr[mid]&&arr[mid]<=arr[high]){
                 min=Math.min(min,arr[mid]);
                 break;
             }
+           
 
 
         }
