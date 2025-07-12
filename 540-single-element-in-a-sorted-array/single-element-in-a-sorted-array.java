@@ -3,9 +3,9 @@ class Solution {
          int low=1,high= arr.length-2,mid=0;
         int ans=-1;
         int tracker=0;
-         if (arr.length==1){
+        if (arr.length==1){
                 return arr[0];
-            }
+            } 
         while (low<=high){
             mid=(low+high)/2;
             ans=arr[mid];
