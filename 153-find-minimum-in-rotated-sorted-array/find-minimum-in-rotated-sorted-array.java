@@ -16,14 +16,6 @@ class Solution {
             } else if (arr[mid] > arr[high]) {
                 low = mid + 1;
             }
-            
-            //  if(arr[low]>=arr[mid]&&arr[mid]<=arr[high]){
-                
-            //     break;
-            // }
-           
-
-
         }
         return min;
     }
