@@ -5,7 +5,7 @@ class Solution {
         if (m<n){
             return findMedianSortedArrays(arr2,arr1);
         }
-        int totallength=n+m , half=(totallength+1)/2;
+        int totallength=n+m , half=(totallength)/2;
        
         int low=0,high=n,mid=0,min=0,max=0;
 
@@ -26,7 +26,7 @@ class Solution {
 
         }
         if (totallength%2==1)
-            return max;
+            return min;
         return (double) (max+min)/2;
     }
 }
