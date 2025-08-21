@@ -1,51 +1,32 @@
 class Solution {
-    public double findMedianSortedArrays(int[] a, int[] b) {
-         // Size of two given arrays
-        int n1 = a.length;
-        int n2 = b.length;
+    public double findMedianSortedArrays(int[] arr1, int[] arr2) {
+         int n=arr1.length;
+        int m=arr2.length;
+        if (m<n){
+            return findMedianSortedArrays(arr2,arr1);
+        }
+        int totallength=n+m , half=(totallength+1)/2;
+       
+        int low=0,high=n,mid=0,min=0,max=0;
 
-        int n = n1 + n2; //total size
-        //required indices:
-        int ind2 = n / 2;
-        int ind1 = ind2 - 1;
-        int cnt = 0;
-        int ind1el = -1, ind2el = -1;
-
-        //apply the merge step:
-        int i = 0, j = 0;
-        while (i < n1 && j < n2) {
-            if (a[i] < b[j]) {
-                if (cnt == ind1) ind1el = a[i];
-                if (cnt == ind2) ind2el = a[i];
-                cnt++;
-                i++;
-            } else {
-                if (cnt == ind1) ind1el = b[j];
-                if (cnt == ind2) ind2el = b[j];
-                cnt++;
-                j++;
+        while (low<=high){
+            mid=(low+high)/2;
+            int cut2 = half - mid;
+           int l1 = (mid == 0) ? Integer.MIN_VALUE : arr1[mid - 1];
+            int r1 = (mid == n) ? Integer.MAX_VALUE : arr1[mid];
+            int l2 = (cut2 == 0) ? Integer.MIN_VALUE : arr2[cut2 - 1];
+            int r2 = (cut2 == m) ? Integer.MAX_VALUE : arr2[cut2];
+            if (l1>r2)high=mid-1;//means l1 is gretaer than r2 , means we have to remove that value of l1 and get  any value beofre it.so it can be done by decreasing mid from 2 to 1 , so it will take only one element from arr1
+            else if (l2>r1)low=mid+1;//if l2 is gretaer tha r1 , means our mid requires to be  more from 2 to 3 or more by adjusting low=mid+1;
+            else{
+                max=Math.max(l1,l2);
+                min=Math.min(r1,r2);
+                break;
             }
-        }
 
-        //copy the left-out elements:
-        while (i < n1) {
-            if (cnt == ind1) ind1el = a[i];
-            if (cnt == ind2) ind2el = a[i];
-            cnt++;
-            i++;
         }
-        while (j < n2) {
-            if (cnt == ind1) ind1el = b[j];
-            if (cnt == ind2) ind2el = b[j];
-            cnt++;
-            j++;
-        }
-
-        //Find the median:
-        if (n % 2 == 1) {
-            return (double)ind2el;
-        }
-
-        return (double)((double)(ind1el + ind2el)) / 2.0;
+        if (totallength%2==1)
+            return max;
+        return (double) (max+min)/2;
     }
 }
