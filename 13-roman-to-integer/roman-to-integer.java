@@ -16,7 +16,7 @@ class Solution {
             if (current>=prev){
                 integer+=current;
             }
-            if (current<prev){
+            else{
                 integer-=current;
             }
             prev=current;
