@@ -2,7 +2,7 @@ class Solution {
     public int beautySum(String str) {
            int beauty = 0;
         for (int i = 0; i < str.length(); i++) {
-            int[] ch = new int[26];   // 👈 int, not char
+            int[] ch = new int[26];   //int not char
 
             for (int j = i; j < str.length(); j++) {
                 ch[str.charAt(j) - 'a']++;
